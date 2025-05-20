@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contagem Regressiva One Punch Man S3</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8d7da; /* Vermelho claro */
+            color: #212529;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+        .countdown-container {
+            background-color: #fff3cd; /* Amarelo claro */
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            border: 5px solid #dc3545; /* Vermelho forte */
+            max-width: 95%;
+            width: 600px; /* Largura original */
+        }
+        .title-opm {
+            font-family: 'Bungee', cursive;
+            color: #dc3545;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px #000;
+        }
+        @media (max-width: 576px) {
+            .title-opm {
+                font-size: 1.8rem;
+            }
+        }
+        .subtitle-opm {
+            font-size: 1.2rem;
+            color: #343a40;
+            margin-bottom: 30px;
+        }
+        .timer {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        .time-block {
+            background-color: #dc3545;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            min-width: 80px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .time-block span {
+            display: block;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        @media (max-width: 576px) {
+            .time-block span {
+                font-size: 1.5rem;
+            }
+            .time-block {
+                min-width: 70px;
+                padding: 10px;
+            }
+        }
+        .time-block .label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+        }
+        .saitama-img {
+            max-width: 150px;
+            height: auto;
+            border-radius: 50%;
+            border: 5px solid #ffc107; /* Amarelo */
+            margin-top: 20px;
+            box-shadow: 0 0 15px rgba(255,193,7,0.7);
+        }
+        .footer-text {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+        #message {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #28a745; /* Verde */
+        }
+    </style>
+</head>
+<body>
+    <div class="countdown-container">
+        <h1 class="title-opm"><i class="fas fa-fist-raised"></i> ONE PUNCH MAN</h1>
+        <p class="subtitle-opm">Contagem Regressiva para a 3ª Temporada!</p>
+
+        <div id="timer" class="timer">
+            <div class="time-block">
+                <span id="days">0</span>
+                <div class="label">Dias</div>
+            </div>
+            <div class="time-block">
+                <span id="hours">0</span>
+                <div class="label">Horas</div>
+            </div>
+            <div class="time-block">
+                <span id="minutes">0</span>
+                <div class="label">Minutos</div>
+            </div>
+            <div class="time-block">
+                <span id="seconds">0</span>
+                <div class="label">Segundos</div>
+            </div>
+        </div>
+
+        <div id="message" style="display:none;">
+            OK. A espera acabou! <i class="fas fa-laugh-beam"></i>
+        </div>
+
+        <img src="https://placehold.co/150x150/FFC107/000000?text=Saitama"
+             onerror="this.onerror=null; this.src='https://placehold.co/150x150/CCCCCC/FFFFFF?text=Imagem+Indisponível';"
+             alt="Saitama" class="saitama-img">
+
+        <p class="footer-text">
+            <i class="fas fa-calendar-alt"></i> Previsão: Outubro de 2025
+        </p>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        // Define a data final da contagem regressiva
+        const countDownDate = new Date("Oct 1, 2025 00:00:00").getTime();
+
+        // Atualiza a contagem a cada 1 segundo
+        const countdownInterval = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = countDownDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = days < 10 ? '0' + days : days;
+            document.getElementById("hours").innerText = hours < 10 ? '0' + hours : hours;
+            document.getElementById("minutes").innerText = minutes < 10 ? '0' + minutes : minutes;
+            document.getElementById("seconds").innerText = seconds < 10 ? '0' + seconds : seconds;
+
+            if (distance < 0) {
+                clearInterval(countdownInterval);
+                document.getElementById("timer").style.display = "none";
+                document.getElementById("message").style.display = "block";
+                document.querySelector(".subtitle-opm").innerText = "Finalmente chegou!";
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
